@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T45HGRTS');</script>
+<!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Da Vinci Genius Amsterdam</title>
@@ -19,6 +26,8 @@
   --rule:rgba(214,240,255,.14);
 }
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 body{background:var(--night);color:var(--paper);font-family:'Hanken Grotesk',system-ui,sans-serif;font-weight:300;font-size:17px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit}
@@ -138,19 +147,62 @@ a{color:inherit}
 
 /* =============== LIST =============== */
 .list{background:var(--paper);color:var(--night);padding:clamp(80px,11vw,160px) clamp(18px,5vw,80px)}
-.list .inner{max-width:1100px;display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(30px,6vw,90px);align-items:end}
-.list h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(46px,6.6vw,108px);line-height:.92;letter-spacing:-.04em}
-.list p{font-size:17px;max-width:38ch;color:#3b3f55}
-form{margin-top:32px;display:flex;flex-direction:column;gap:14px}
-label{font-size:14px;color:#3b3f55}
-.row{display:flex;gap:10px;flex-wrap:wrap}
-input{flex:1 1 220px;min-width:0;font:inherit;font-size:18px;padding:16px 18px;background:#fff;border:1px solid #c9c0aa;color:var(--night);border-radius:2px}
-input:focus{outline:none;border-color:var(--lapis);box-shadow:0 0 0 3px rgba(15,29,82,.2)}
-button{font:inherit;font-size:16px;font-weight:500;padding:16px 26px;background:var(--lapis);color:var(--paper);border:0;border-radius:2px;cursor:pointer;transition:background .25s}
-button:hover{background:#1a2e78}
-.msg{min-height:26px;font-size:15px;color:var(--lapis)}
+.list .inner{max-width:1200px;margin:0 auto}
+.list .head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px 60px;margin-bottom:clamp(40px,6vw,72px)}
+.list h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(46px,6.6vw,108px);line-height:.92;letter-spacing:-.04em;text-wrap:balance;max-width:11ch}
+.list .head p{font-size:17px;max-width:34ch;color:#3b3f55}
+.booker>*{min-width:0}
+.booker{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(24px,4vw,56px);align-items:start}
+.step{margin-bottom:40px}
+.step h3{display:flex;align-items:baseline;gap:12px;font-weight:500;font-size:16px;margin-bottom:16px;color:var(--night)}
+.step h3 span{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:400;font-size:22px;color:#8a6a2c}
+.month{font-family:'Bodoni Moda',serif;font-style:italic;font-size:15px;color:#5b5e70;margin-left:auto}
+.days{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 14px;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:#cfc5ad transparent}
+.day{flex:none;scroll-snap-align:start;width:76px;padding:12px 0 10px;display:flex;flex-direction:column;align-items:center;gap:2px;background:transparent;border:1px solid #cfc5ad;border-radius:2px;color:var(--night);font:inherit;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.day small{font-size:12px;letter-spacing:.06em;color:#5b5e70;text-transform:lowercase}
+.day b{font-family:'Bodoni Moda',serif;font-weight:400;font-size:34px;line-height:1;font-variant-numeric:lining-nums}
+.day:hover{border-color:var(--night)}
+.day[aria-pressed="true"]{background:var(--lapis);border-color:var(--lapis);color:var(--paper)}
+.day[aria-pressed="true"] small{color:#c9cfee}
+.times{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.time{padding:14px 0;background:transparent;border:1px solid #cfc5ad;border-radius:2px;font:inherit;font-size:17px;font-variant-numeric:tabular-nums;color:var(--night);cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.time:hover{border-color:var(--night)}
+.time[aria-pressed="true"]{background:var(--lapis);border-color:var(--lapis);color:var(--paper)}
+.times[data-off="true"] .time{opacity:.4;pointer-events:none}
+.ticket{position:sticky;top:24px;background:var(--night);color:var(--paper);padding:28px;border-radius:2px;display:flex;flex-direction:column;gap:22px}
+.ticket .t-name{font-family:'Bodoni Moda',serif;font-size:26px;line-height:1.1}
+.ticket .t-name i{color:var(--gold)}
+.ticket dl{display:grid;gap:0;border-top:1px dashed rgba(236,229,213,.25)}
+.ticket dl div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px dashed rgba(236,229,213,.25);font-size:15px}
+.ticket dt{color:var(--dim)}
+.ticket dd{text-align:right;font-variant-numeric:tabular-nums}
+.ticket dd.empty{color:var(--dim)}
+.buy{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;padding:18px 22px;background:var(--gold);color:var(--night);text-decoration:none;font-size:17px;font-weight:500;border-radius:2px;transition:background .25s}
+.buy:hover{background:#efc77a}
+.buy svg{width:26px;height:26px;flex:none;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.buy:hover svg{transform:translateX(6px)}
+.via{font-size:13px;color:var(--dim);margin-top:-8px}
+@media (max-width:860px){
+  .booker{grid-template-columns:1fr}
+  .times{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .ticket{position:static}
+}
 
-footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px 30px;padding:32px clamp(18px,5vw,80px);font-size:14px;color:var(--dim)}
+footer{padding:clamp(56px,8vw,96px) clamp(18px,5vw,80px) 28px;color:var(--paper);display:flex;flex-direction:column;gap:clamp(40px,6vw,64px)}
+.f-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px}
+.f-mark{font-family:'Bodoni Moda',serif;font-size:clamp(40px,6vw,84px);line-height:.95;letter-spacing:-.03em}
+.f-mark i{color:var(--gold)}
+.f-mark span{display:block;font-size:clamp(18px,.32em,27px);letter-spacing:0;color:var(--dim);margin-top:.5em}
+.f-tix{font-size:16px;text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:3px}
+.f-tix:hover{color:var(--gold)}
+.f-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;border-top:1px solid var(--rule);padding-top:28px}
+.f-cols small{display:block;font-size:13px;color:var(--dim);margin-bottom:10px}
+.f-cols p{font-family:'Bodoni Moda',serif;font-size:21px;line-height:1.3}
+.partner a{display:inline-flex;align-items:center;text-decoration:none}
+.partner img{height:22px;width:auto;display:block}
+.partner b{font-family:'Bodoni Moda',serif;font-weight:400;font-size:21px}
+.f-copy{font-size:13px;color:var(--dim)}
+@media (max-width:620px){.f-cols{grid-template-columns:1fr}}
 
 @media (max-width:860px){
   .sketch{width:120vw;right:-40vw;top:10vh;opacity:.7}
@@ -166,6 +218,10 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px 30px;p
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T45HGRTS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <header class="hero" id="hero">
   <div class="media" id="media">
@@ -196,7 +252,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px 30px;p
 
   <div class="top">
     <div class="wordmark">Da Vinci <i>Genius</i></div>
-    <a href="#lijst">Zet me op de lijst</a>
+    <a href="#tickets">Tickets</a>
   </div>
 
   <div class="hero-copy">
@@ -264,31 +320,59 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px 30px;p
     <h2>Room Mate Aitana<small>op het IJdok, een kwartier lopen van Centraal</small></h2>
     <div class="when">
       <div><b>Opening</b>Datum volgt snel</div>
-      <div><b>Tickets</b>Eerst voor wie op de lijst staat</div>
+      <div><b>Tickets</b>Per dag en tijdslot</div>
     </div>
   </div>
 </section>
 
-<section class="list" id="lijst">
+<section class="list" id="tickets">
   <div class="inner">
-    <h2>Wees er als eerste bij.</h2>
-    <div>
-      <p>Laat je e-mailadres achter. Je hoort de openingsdatum voordat die openbaar is en je kunt eerder tickets kopen.</p>
-      <form id="f" novalidate>
-        <label for="em">E-mailadres</label>
-        <div class="row">
-          <input id="em" type="email" autocomplete="email" placeholder="naam@voorbeeld.nl" required>
-          <button type="submit">Zet me op de lijst</button>
+    <div class="head">
+      <h2>Kies je dag en je tijd.</h2>
+      <p>Je koopt een ticket voor een vaste dag en tijd. Kies hier wanneer je wilt komen en rond je bestelling af bij Tiqqo.</p>
+    </div>
+    <div class="booker">
+      <div>
+        <div class="step">
+          <h3><span>1</span>Kies een dag <em class="month" id="month"></em></h3>
+          <div class="days" id="days" role="group" aria-label="Dag"></div>
         </div>
-        <div class="msg" id="msg" role="status"></div>
-      </form>
+        <div class="step">
+          <h3><span>2</span>Kies een tijd</h3>
+          <div class="times" id="times" role="group" aria-label="Tijd" data-off="true"></div>
+        </div>
+      </div>
+      <aside class="ticket" aria-live="polite">
+        <div class="t-name">Da Vinci <i>Genius</i><br>Amsterdam</div>
+        <dl>
+          <div><dt>Dag</dt><dd id="sum-day" class="empty">Nog niet gekozen</dd></div>
+          <div><dt>Tijd</dt><dd id="sum-time" class="empty">Nog niet gekozen</dd></div>
+          <div><dt>Locatie</dt><dd>Room Mate Aitana</dd></div>
+        </dl>
+        <!-- TIQQO: vervang de link hieronder (en in de navigatie bovenaan en in TICKETS.url in het script) door jullie ticketlink -->
+        <a class="buy" id="buy" href="https://TIQQO-LINK-HIER" target="_blank" rel="noopener"><span id="buy-label">Tickets kopen</span>
+          <svg viewBox="0 0 28 28" aria-hidden="true"><path d="M4 14h19M16 7l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+        </a>
+        <p class="via">Bij Tiqqo kies je het aantal tickets en reken je af.</p>
+      </aside>
     </div>
   </div>
 </section>
 
 <footer>
-  <span>Da Vinci Genius Amsterdam</span>
-  <span>Een show van Phoenix Immersive in Room Mate Aitana</span>
+  <div class="f-top">
+    <div class="f-mark">Da Vinci <i>Genius</i><span>Amsterdam</span></div>
+    <a class="f-tix" href="#tickets">Tickets kiezen</a>
+  </div>
+  <div class="f-cols">
+    <div><small>Een show van</small><p>Phoenix Immersive</p></div>
+    <div><small>Locatie</small><p>Room Mate Aitana<br>IJdok, Amsterdam</p></div>
+    <div class="partner"><small>Ticketing partner</small>
+      <!-- Tiqqo-logo van hun eigen site. Laadt het niet, dan blijft het woord Tiqqo staan. -->
+      <a href="https://tiqqo.com/" target="_blank" rel="noopener" aria-label="Tiqqo"><img src="https://tiqqo.com/assets/logos/tiqqo-logo-white.svg" alt="Tiqqo" height="22" onerror="this.replaceWith(Object.assign(document.createElement('b'),{textContent:'Tiqqo'}))"></a>
+    </div>
+  </div>
+  <p class="f-copy">© 2026 Da Vinci Genius Amsterdam</p>
 </footer>
 
 <script>
@@ -398,12 +482,48 @@ function f2(t){
 }
 requestAnimationFrame(f2);
 
-/* ---------- aanmelden (nog niet gekoppeld aan een mailingsysteem) ---------- */
-document.getElementById('f').addEventListener('submit',e=>{
-  e.preventDefault();const i=document.getElementById('em'),m=document.getElementById('msg');
-  if(!i.checkValidity()){m.textContent='Vul een geldig e-mailadres in, bijvoorbeeld naam@voorbeeld.nl.';i.focus();return}
-  m.textContent='Je staat op de lijst. We mailen je zodra de datum bekend is.';i.value='';
-});
+
+
+/* ---------- tickets: kies dag en tijd, daarna door naar Tiqqo ---------- */
+const TICKETS={
+  url:'https://TIQQO-LINK-HIER',           // jullie Tiqqo-link
+  start:null,                              // eerste speeldag, bijv. '2026-10-17'. Leeg = vandaag
+  days:14,                                 // hoeveel dagen tonen
+  closed:[],                               // gesloten weekdagen: 0=zo,1=ma ... bijv. [1,2]
+  times:['11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00']
+};
+(function(){
+  const daysEl=document.getElementById('days'),timesEl=document.getElementById('times'),
+        sumDay=document.getElementById('sum-day'),sumTime=document.getElementById('sum-time'),
+        buyLabel=document.getElementById('buy-label'),monthEl=document.getElementById('month');
+  const wd=new Intl.DateTimeFormat('nl-NL',{weekday:'short'}),
+        long=new Intl.DateTimeFormat('nl-NL',{weekday:'long',day:'numeric',month:'long'}),
+        mon=new Intl.DateTimeFormat('nl-NL',{month:'long',year:'numeric'});
+  let d=TICKETS.start?new Date(TICKETS.start+'T12:00'):new Date();d.setHours(12,0,0,0);
+  const list=[];
+  while(list.length<TICKETS.days){if(!TICKETS.closed.includes(d.getDay()))list.push(new Date(d));d.setDate(d.getDate()+1)}
+  let day=null,time=null;
+  function months(){const a=mon.format(list[0]),b=mon.format(list[list.length-1]);monthEl.textContent=a===b?a:a.split(' ')[0]+' – '+b}
+  function update(){
+    sumDay.textContent=day?long.format(day):'Nog niet gekozen';sumDay.classList.toggle('empty',!day);
+    sumTime.textContent=time||'Nog niet gekozen';sumTime.classList.toggle('empty',!time);
+    timesEl.dataset.off=day?'false':'true';
+    buyLabel.textContent=day&&time?'Verder naar tickets':'Tickets kopen';
+  }
+  list.forEach(dt=>{
+    const b=document.createElement('button');b.type='button';b.className='day';b.setAttribute('aria-pressed','false');
+    b.setAttribute('aria-label',long.format(dt));
+    b.innerHTML=`<small>${wd.format(dt).replace('.','')}</small><b>${dt.getDate()}</b><small>${dt.toLocaleDateString('nl-NL',{month:'short'}).replace('.','')}</small>`;
+    b.addEventListener('click',()=>{daysEl.querySelectorAll('.day').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');day=dt;update()});
+    daysEl.appendChild(b);
+  });
+  TICKETS.times.forEach(t=>{
+    const b=document.createElement('button');b.type='button';b.className='time';b.textContent=t;b.setAttribute('aria-pressed','false');
+    b.addEventListener('click',()=>{timesEl.querySelectorAll('.time').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');time=t;update()});
+    timesEl.appendChild(b);
+  });
+  months();update();
+})();
 </script>
 </body>
 </html>
