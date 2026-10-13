@@ -14,7 +14,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="description" content="Da Vinci Genius Amsterdam, de interactieve immersive experience. Van 1 december 2026 tot 28 februari 2027 in Room Mate Aitana. Koop je tickets per dag en tijdslot.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Hanken+Grotesk:wght@300;400;500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;1,500&family=Hanken+Grotesk:wght@400;500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
 <style>
 :root{
   --night:#050819;
@@ -22,17 +22,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   --light:#d6f0ff;
   --gold:#e3b862;
   --paper:#ece5d5;
-  --dim:#8b93b8;
+  --dim:#aab1d0;
   --rule:rgba(214,240,255,.14);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{background:var(--night);color:var(--paper);font-family:'Hanken Grotesk',system-ui,sans-serif;font-weight:300;font-size:17px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{background:var(--night);color:var(--paper);font-family:'Hanken Grotesk',system-ui,sans-serif;font-weight:400;font-size:17px;font-variant-numeric:lining-nums;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--gold);outline-offset:4px}
-.bod{font-family:'Bodoni Moda',serif;font-optical-sizing:auto}
+.bod{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-optical-sizing:auto}
 .hand{font-family:'Mrs Saint Delafield',cursive;font-weight:400}
 .mirror{display:inline-block;transform:scaleX(-1)}
 
@@ -64,25 +64,25 @@ a{color:inherit}
 .top .wordmark{opacity:0;transform:translateY(-6px);transition:opacity .35s,transform .35s}
 .top.scrolled .wordmark{opacity:1;transform:none}
 .top>*{pointer-events:auto}
-.wordmark{font-family:'Bodoni Moda',serif;font-size:21px;letter-spacing:.01em}
+.wordmark{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:21px;letter-spacing:.01em}
 .wordmark i{color:var(--gold)}
 .top .nav-cta{font-size:15px;font-weight:500;text-decoration:none;background:var(--gold);color:var(--night);padding:12px 22px;border-radius:2px;transition:background .25s}
 .top .nav-cta:hover{background:#efc77a}
 
 .hero-copy{position:relative;z-index:5;padding:clamp(110px,16vh,150px) clamp(18px,4vw,60px) clamp(36px,7vh,88px);max-width:min(980px,100%);pointer-events:none}
-.hero h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(42px,min(7.2vw,10svh),124px);line-height:.92;letter-spacing:-.035em}
+.hero h1{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-weight:500;font-size:clamp(42px,min(7.2vw,10svh),124px);line-height:.92;letter-spacing:-.015em}
 .hero h1 span{display:block;opacity:0;transform:translateY(.25em);animation:in 1.4s cubic-bezier(.2,.8,.2,1) forwards}
 .hero h1 span:nth-child(2){animation-delay:.9s;color:var(--light);text-shadow:0 0 28px rgba(214,240,255,.45)}
 @keyframes in{to{opacity:1;transform:none}}
 [hidden]{display:none!important}
 .show-id{margin-bottom:clamp(20px,3.5vh,36px);display:flex;flex-direction:column;gap:10px}
-.show-name{font-family:'Bodoni Moda',serif;font-size:clamp(24px,2.6vw,38px);line-height:1.05;letter-spacing:-.01em}
+.show-name{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:clamp(24px,2.6vw,38px);line-height:1.05;letter-spacing:-.01em}
 .show-name i{color:var(--gold)}
 .show-meta{display:flex;flex-wrap:wrap;gap:6px 0;font-size:clamp(14px,1.1vw,16px);color:var(--gold)}
 .show-meta span:not(:first-child){padding-left:14px;margin-left:14px;border-left:1px solid rgba(227,184,98,.5)}
 .hero .sub{margin-top:28px;opacity:0;animation:in 1s .4s forwards;display:flex;flex-direction:column;align-items:flex-start;gap:24px}
 .hero .lede{max-width:34ch;font-size:clamp(19px,1.6vw,23px);line-height:1.5;color:var(--paper);text-shadow:0 2px 24px rgba(5,8,25,.8)}
-.facts-row{list-style:none;display:flex;flex-wrap:wrap;gap:8px 0;font-size:15px;color:#cdd3ea}
+.facts-row{list-style:none;display:flex;flex-wrap:wrap;gap:8px 0;font-size:15px;color:#dde1f1}
 .facts-row li:not(:first-child){padding-left:16px;margin-left:16px;border-left:1px solid rgba(227,184,98,.5)}
 .cta{pointer-events:auto;display:inline-flex;align-items:center;gap:14px;padding:17px 26px;background:var(--gold);color:var(--night);text-decoration:none;font-size:17px;font-weight:500;border-radius:2px;transition:background .25s,transform .25s}
 .cta:hover{background:#efc77a}
@@ -90,16 +90,16 @@ a{color:inherit}
 .cta:hover svg{transform:translateY(3px)}
 .note .cta{margin-top:32px}
 .hint{position:absolute;z-index:5;right:clamp(18px,4vw,60px);bottom:clamp(40px,8vh,96px);text-align:right;opacity:0;animation:in 1s 2.8s forwards;pointer-events:none}
-.hint .hand{font-size:44px;color:var(--gold);line-height:1}
+.hint .hand{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-style:italic;font-weight:500;font-size:30px;color:var(--gold);line-height:1}
 .hint small{display:block;font-size:13px;color:var(--dim);margin-top:4px}
 
 /* =============== SPREAD (codex pages) =============== */
 .spread{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:0;border-top:1px solid var(--rule)}
 .spread .page{padding:clamp(70px,10vw,150px) clamp(18px,5vw,80px)}
 .spread .page+.page{border-left:1px solid var(--rule)}
-.big{font-family:'Bodoni Moda',serif;font-size:clamp(30px,3.3vw,52px);line-height:1.18;letter-spacing:-.015em;max-width:22ch}
+.big{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:clamp(30px,3.3vw,52px);line-height:1.18;letter-spacing:-.015em;max-width:22ch}
 .big+.big{margin-top:.8em;color:var(--dim)}
-.note{position:relative;margin-top:60px;max-width:40ch;color:#b9bfd9}
+.note{position:relative;margin-top:60px;max-width:40ch;color:#cfd4e8}
 .note .hand{position:absolute;left:-6px;top:-54px;font-size:42px;color:var(--gold)}
 .spread figure{position:relative}
 .spread figure img{width:100%;aspect-ratio:4/5;object-fit:cover}
@@ -107,10 +107,10 @@ a{color:inherit}
 
 /* =============== THINGS YOU DO =============== */
 .acts{padding:clamp(70px,10vw,150px) clamp(18px,5vw,80px);background:linear-gradient(var(--night),var(--lapis) 140%)}
-.acts h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(20px,1.6vw,24px);color:var(--dim);margin-bottom:48px;max-width:40ch}
+.acts h2{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-weight:500;font-size:clamp(20px,1.6vw,24px);color:var(--dim);margin-bottom:48px;max-width:40ch}
 .act{display:grid;grid-template-columns:minmax(0,1fr) clamp(140px,22vw,340px);gap:clamp(20px,4vw,64px);align-items:center;padding:clamp(28px,3.5vw,48px) 0;border-top:1px solid var(--rule)}
 .act:last-child{border-bottom:1px solid var(--rule)}
-.act p{font-family:'Bodoni Moda',serif;font-size:clamp(34px,5.4vw,88px);line-height:1;letter-spacing:-.03em}
+.act p{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:clamp(34px,5.4vw,88px);line-height:1;letter-spacing:-.015em}
 .act p em{font-style:normal;color:var(--light)}
 .act img{width:100%;aspect-ratio:16/10;object-fit:cover;box-shadow:0 30px 80px -20px rgba(120,90,255,.45)}
 
@@ -129,7 +129,7 @@ a{color:inherit}
 .stage canvas{position:absolute;inset:0;width:100%;height:100%;z-index:3;cursor:crosshair}
 .stage .vig{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,.6))}
 .room-text{position:absolute;z-index:4;left:0;right:0;bottom:clamp(40px,10vh,110px);text-align:center;pointer-events:none;padding:0 18px}
-.room-text p{position:absolute;left:0;right:0;font-family:'Bodoni Moda',serif;font-size:clamp(34px,5.6vw,92px);line-height:1;letter-spacing:-.03em;text-shadow:0 4px 40px rgba(0,0,0,.8);opacity:0;transform:translateY(20px);transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1);bottom:0}
+.room-text p{position:absolute;left:0;right:0;font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:clamp(34px,5.6vw,92px);line-height:1;letter-spacing:-.015em;text-shadow:0 4px 40px rgba(0,0,0,.8);opacity:0;transform:translateY(20px);transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1);bottom:0}
 .room-text p.on{opacity:1;transform:none}
 .room-text small{display:block;font-family:'Hanken Grotesk',sans-serif;font-size:15px;letter-spacing:0;color:#dfe3f5;margin-top:14px;text-shadow:0 2px 20px #000}
 .act:nth-child(odd) img{transform:rotate(-1.5deg)}
@@ -139,43 +139,43 @@ a{color:inherit}
 .bleed{position:relative;height:95vh;min-height:560px;overflow:hidden}
 .bleed img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .bleed::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,transparent 45%,var(--night) 100%),linear-gradient(to right,rgba(5,8,25,.1),rgba(5,8,25,.8))}
-.bleed p{position:absolute;z-index:1;right:clamp(18px,5vw,80px);top:clamp(60px,14vh,160px);max-width:15ch;text-align:right;font-family:'Bodoni Moda',serif;font-size:clamp(40px,6vw,96px);line-height:.98;letter-spacing:-.03em}
+.bleed p{position:absolute;z-index:1;right:clamp(18px,5vw,80px);top:clamp(60px,14vh,160px);max-width:15ch;text-align:right;font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:clamp(40px,6vw,96px);line-height:.98;letter-spacing:-.015em}
 
 /* =============== MARGINALIA (facts) =============== */
 .margin{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(30px,6vw,100px);padding:clamp(70px,10vw,150px) clamp(18px,5vw,80px)}
 .margin .hand{font-size:clamp(60px,8vw,120px);color:var(--gold);line-height:.9}
 .facts{display:grid;grid-template-columns:1fr 1fr;gap:48px clamp(30px,5vw,80px)}
-.fact h3{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(24px,2.2vw,32px);line-height:1.15;margin-bottom:10px}
-.fact p{color:#b9bfd9;max-width:36ch;font-size:16px}
+.fact h3{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-weight:500;font-size:clamp(24px,2.2vw,32px);line-height:1.15;margin-bottom:10px}
+.fact p{color:#cfd4e8;max-width:36ch;font-size:16px}
 
 /* =============== VENUE =============== */
 .venue{position:relative;z-index:1;margin-top:-30vh;padding:0 clamp(18px,5vw,80px) clamp(80px,12vw,180px);overflow:hidden}
-.venue .bridge{font-family:'Bodoni Moda',serif;font-style:italic;font-size:clamp(24px,2.6vw,40px);color:var(--gold);margin-bottom:.4em}
+.venue .bridge{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-style:italic;font-size:clamp(24px,2.6vw,40px);color:var(--gold);margin-bottom:.4em}
 .venue svg{position:absolute;right:-8%;top:0;width:min(70vw,900px);opacity:.5;-webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 35%);mask-image:linear-gradient(to bottom,transparent 0%,#000 35%)}
 .venue svg *{fill:none;stroke:var(--gold);stroke-width:1;vector-effect:non-scaling-stroke}
 .venue .inner{position:relative;max-width:1100px}
-.venue h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(58px,11vw,180px);line-height:.88;letter-spacing:-.045em}
+.venue h2{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-weight:500;font-size:clamp(58px,11vw,180px);line-height:.88;letter-spacing:-.015em}
 .venue h2 small{display:block;font-size:.32em;letter-spacing:-.01em;color:var(--dim);margin-top:.35em}
 .venue .when{margin-top:48px;display:flex;flex-wrap:wrap;gap:16px 56px}
 .venue .when div{font-size:15px;color:var(--dim)}
-.venue .when b{display:block;font-weight:400;font-family:'Bodoni Moda',serif;font-size:26px;color:var(--paper)}
+.venue .when b{display:block;font-weight:400;font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:26px;color:var(--paper)}
 
 /* =============== LIST =============== */
 .list{background:var(--paper);color:var(--night);padding:clamp(80px,11vw,160px) clamp(18px,5vw,80px)}
 .list .inner{max-width:1200px;margin:0 auto}
 .list .head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px 60px;margin-bottom:clamp(40px,6vw,72px)}
-.list h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(46px,6.6vw,108px);line-height:.92;letter-spacing:-.04em;text-wrap:balance;max-width:11ch}
-.list .head p{font-size:17px;max-width:34ch;color:#3b3f55}
+.list h2{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-weight:500;font-size:clamp(46px,6.6vw,108px);line-height:.92;letter-spacing:-.015em;text-wrap:balance;max-width:11ch}
+.list .head p{font-size:17px;max-width:34ch;color:#2d3045}
 .booker>*{min-width:0}
 .booker{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(24px,4vw,56px);align-items:start}
 .step{margin-bottom:40px}
 .step h3{display:flex;align-items:baseline;gap:12px;font-weight:500;font-size:16px;margin-bottom:16px;color:var(--night)}
-.step h3 span{font-family:'Bodoni Moda',serif;font-style:italic;font-weight:400;font-size:22px;color:#8a6a2c}
-.month{font-family:'Bodoni Moda',serif;font-style:italic;font-size:15px;color:#5b5e70;margin-left:auto}
+.step h3 span{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-style:italic;font-weight:400;font-size:22px;color:#8a6a2c}
+.month{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-style:italic;font-size:15px;color:#44475a;margin-left:auto}
 .days{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 14px;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:#cfc5ad transparent}
 .day{flex:none;scroll-snap-align:start;width:76px;padding:12px 0 10px;display:flex;flex-direction:column;align-items:center;gap:2px;background:transparent;border:1px solid #cfc5ad;border-radius:2px;color:var(--night);font:inherit;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
-.day small{font-size:12px;letter-spacing:.06em;color:#5b5e70;text-transform:lowercase}
-.day b{font-family:'Bodoni Moda',serif;font-weight:400;font-size:34px;line-height:1;font-variant-numeric:lining-nums}
+.day small{font-size:12px;letter-spacing:.06em;color:#44475a;text-transform:lowercase}
+.day b{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-weight:500;font-size:34px;line-height:1;font-variant-numeric:lining-nums}
 .day:hover{border-color:var(--night)}
 .day[aria-pressed="true"]{background:var(--lapis);border-color:var(--lapis);color:var(--paper)}
 .day[aria-pressed="true"] small{color:#c9cfee}
@@ -185,7 +185,7 @@ a{color:inherit}
 .time[aria-pressed="true"]{background:var(--lapis);border-color:var(--lapis);color:var(--paper)}
 .times[data-off="true"] .time{opacity:.4;pointer-events:none}
 .ticket{position:sticky;top:24px;background:var(--night);color:var(--paper);padding:28px;border-radius:2px;display:flex;flex-direction:column;gap:22px}
-.ticket .t-name{font-family:'Bodoni Moda',serif;font-size:26px;line-height:1.1}
+.ticket .t-name{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:26px;line-height:1.1}
 .ticket .t-name i{color:var(--gold)}
 .ticket dl{display:grid;gap:0;border-top:1px dashed rgba(236,229,213,.25)}
 .ticket dl div{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px dashed rgba(236,229,213,.25);font-size:15px}
@@ -205,27 +205,27 @@ a{color:inherit}
 
 footer{padding:clamp(56px,8vw,96px) clamp(18px,5vw,80px) 28px;color:var(--paper);display:flex;flex-direction:column;gap:clamp(40px,6vw,64px)}
 .f-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px}
-.f-mark{font-family:'Bodoni Moda',serif;font-size:clamp(40px,6vw,84px);line-height:.95;letter-spacing:-.03em}
+.f-mark{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:clamp(40px,6vw,84px);line-height:.95;letter-spacing:-.015em}
 .f-mark i{color:var(--gold)}
 .f-mark span{display:block;font-size:clamp(18px,.32em,27px);letter-spacing:0;color:var(--dim);margin-top:.5em}
 .f-tix{font-size:16px;text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:3px}
 .f-tix:hover{color:var(--gold)}
 .f-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;border-top:1px solid var(--rule);padding-top:28px}
 .f-cols small{display:block;font-size:13px;color:var(--dim);margin-bottom:10px}
-.f-cols p{font-family:'Bodoni Moda',serif;font-size:21px;line-height:1.3}
+.f-cols p{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:21px;line-height:1.3}
 .faq{padding:clamp(80px,11vw,150px) clamp(18px,5vw,80px)}
 .faq .inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(30px,6vw,90px)}
-.faq h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(40px,5vw,72px);line-height:.95;letter-spacing:-.035em;text-wrap:balance}
+.faq h2{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-weight:500;font-size:clamp(40px,5vw,72px);line-height:.95;letter-spacing:-.015em;text-wrap:balance}
 .faq details{border-top:1px solid var(--rule)}
 .faq .inner>div{border-bottom:1px solid var(--rule);align-self:start}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;font-family:'Bodoni Moda',serif;font-size:clamp(20px,1.8vw,25px)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:clamp(20px,1.8vw,25px)}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";font-family:'Hanken Grotesk',sans-serif;font-weight:300;font-size:28px;color:var(--gold);transition:transform .3s}
 .faq details[open] summary::after{transform:rotate(45deg)}
-.faq details p{padding:0 0 24px;max-width:60ch;color:#b9bfd9}
+.faq details p{padding:0 0 24px;max-width:60ch;color:#cfd4e8}
 .partner a{display:inline-flex;align-items:center;text-decoration:none}
 .partner img{height:22px;width:auto;display:block}
-.partner b{font-family:'Bodoni Moda',serif;font-weight:400;font-size:21px}
+.partner b{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-weight:500;font-size:21px}
 .f-copy{font-size:13px;color:var(--dim)}
 @media (max-width:620px){.f-cols{grid-template-columns:1fr}}
 @media (max-width:620px){.show-meta{flex-direction:column;gap:4px}.show-meta span:not(:first-child){padding-left:0;margin-left:0;border-left:0}}
