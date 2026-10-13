@@ -10,8 +10,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Da Vinci Genius Amsterdam</title>
-<meta name="description" content="Da Vinci Genius komt naar Room Mate Aitana in Amsterdam. Een immersive show waarin jij Leonardo's tekeningen afmaakt.">
+<title>Da Vinci Genius Amsterdam | Immersive Experience</title>
+<meta name="description" content="Da Vinci Genius Amsterdam, de interactieve immersive experience. Van 1 december 2026 tot 28 februari 2027 in Room Mate Aitana. Koop je tickets per dag en tijdslot.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Hanken+Grotesk:wght@300;400;500&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
@@ -37,7 +37,7 @@ a{color:inherit}
 .mirror{display:inline-block;transform:scaleX(-1)}
 
 /* =============== HERO =============== */
-.hero{position:relative;height:100svh;min-height:680px;overflow:hidden;cursor:crosshair;touch-action:pan-y}
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;cursor:crosshair;touch-action:pan-y}
 .media,.media>*{position:absolute;inset:0}
 .slide{background-size:cover;background-position:center;opacity:0;transform:scale(1.1);transition:opacity 2.4s ease;filter:saturate(1.25) contrast(1.05)}
 .slide.on{opacity:1;animation:drift 12s linear forwards}
@@ -59,22 +59,37 @@ a{color:inherit}
 @keyframes draw{to{stroke-dashoffset:0}}
 @keyframes appear{to{opacity:1}}
 
-.top{position:absolute;z-index:5;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:28px clamp(18px,4vw,60px);pointer-events:none}
+.top{position:fixed;z-index:50;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:calc(22px + env(safe-area-inset-top,0px)) clamp(18px,4vw,60px) 22px;pointer-events:none;transition:background .35s,padding .35s,backdrop-filter .35s}
+.top.scrolled{background:rgba(5,8,25,.82);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);padding-block:calc(12px + env(safe-area-inset-top,0px)) 12px}
+.top .wordmark{opacity:0;transform:translateY(-6px);transition:opacity .35s,transform .35s}
+.top.scrolled .wordmark{opacity:1;transform:none}
 .top>*{pointer-events:auto}
 .wordmark{font-family:'Bodoni Moda',serif;font-size:21px;letter-spacing:.01em}
 .wordmark i{color:var(--gold)}
-.top a{font-size:15px;text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:2px}
-.top a:hover{color:var(--gold)}
+.top .nav-cta{font-size:15px;font-weight:500;text-decoration:none;background:var(--gold);color:var(--night);padding:12px 22px;border-radius:2px;transition:background .25s}
+.top .nav-cta:hover{background:#efc77a}
 
-.hero-copy{position:absolute;z-index:5;left:clamp(18px,4vw,60px);bottom:clamp(40px,8vh,96px);max-width:min(900px,92vw);pointer-events:none}
-.hero h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(54px,9.2vw,152px);line-height:.92;letter-spacing:-.035em}
+.hero-copy{position:relative;z-index:5;padding:clamp(110px,16vh,150px) clamp(18px,4vw,60px) clamp(36px,7vh,88px);max-width:min(980px,100%);pointer-events:none}
+.hero h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(42px,min(7.2vw,10svh),124px);line-height:.92;letter-spacing:-.035em}
 .hero h1 span{display:block;opacity:0;transform:translateY(.25em);animation:in 1.4s cubic-bezier(.2,.8,.2,1) forwards}
-.hero h1 span:nth-child(2){animation-delay:3.4s;color:var(--light);text-shadow:0 0 28px rgba(214,240,255,.45)}
+.hero h1 span:nth-child(2){animation-delay:.9s;color:var(--light);text-shadow:0 0 28px rgba(214,240,255,.45)}
 @keyframes in{to{opacity:1;transform:none}}
-.hero .sub{display:flex;flex-wrap:wrap;gap:12px 40px;margin-top:34px;opacity:0;animation:in 1.2s 4s forwards;align-items:baseline}
-.hero .sub p{max-width:30ch;font-size:17px;color:#cdd3ea}
-.hero .sub strong{font-weight:500;color:var(--paper)}
-.hint{position:absolute;z-index:5;right:clamp(18px,4vw,60px);bottom:clamp(40px,8vh,96px);text-align:right;opacity:0;animation:in 1s 4.6s forwards;pointer-events:none}
+[hidden]{display:none!important}
+.show-id{margin-bottom:clamp(20px,3.5vh,36px);display:flex;flex-direction:column;gap:10px}
+.show-name{font-family:'Bodoni Moda',serif;font-size:clamp(24px,2.6vw,38px);line-height:1.05;letter-spacing:-.01em}
+.show-name i{color:var(--gold)}
+.show-meta{display:flex;flex-wrap:wrap;gap:6px 0;font-size:clamp(14px,1.1vw,16px);color:var(--gold)}
+.show-meta span:not(:first-child){padding-left:14px;margin-left:14px;border-left:1px solid rgba(227,184,98,.5)}
+.hero .sub{margin-top:28px;opacity:0;animation:in 1s .4s forwards;display:flex;flex-direction:column;align-items:flex-start;gap:24px}
+.hero .lede{max-width:34ch;font-size:clamp(19px,1.6vw,23px);line-height:1.5;color:var(--paper);text-shadow:0 2px 24px rgba(5,8,25,.8)}
+.facts-row{list-style:none;display:flex;flex-wrap:wrap;gap:8px 0;font-size:15px;color:#cdd3ea}
+.facts-row li:not(:first-child){padding-left:16px;margin-left:16px;border-left:1px solid rgba(227,184,98,.5)}
+.cta{pointer-events:auto;display:inline-flex;align-items:center;gap:14px;padding:17px 26px;background:var(--gold);color:var(--night);text-decoration:none;font-size:17px;font-weight:500;border-radius:2px;transition:background .25s,transform .25s}
+.cta:hover{background:#efc77a}
+.cta svg{width:22px;height:22px;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.cta:hover svg{transform:translateY(3px)}
+.note .cta{margin-top:32px}
+.hint{position:absolute;z-index:5;right:clamp(18px,4vw,60px);bottom:clamp(40px,8vh,96px);text-align:right;opacity:0;animation:in 1s 2.8s forwards;pointer-events:none}
 .hint .hand{font-size:44px;color:var(--gold);line-height:1}
 .hint small{display:block;font-size:13px;color:var(--dim);margin-top:4px}
 
@@ -198,11 +213,23 @@ footer{padding:clamp(56px,8vw,96px) clamp(18px,5vw,80px) 28px;color:var(--paper)
 .f-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;border-top:1px solid var(--rule);padding-top:28px}
 .f-cols small{display:block;font-size:13px;color:var(--dim);margin-bottom:10px}
 .f-cols p{font-family:'Bodoni Moda',serif;font-size:21px;line-height:1.3}
+.faq{padding:clamp(80px,11vw,150px) clamp(18px,5vw,80px)}
+.faq .inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(30px,6vw,90px)}
+.faq h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:clamp(40px,5vw,72px);line-height:.95;letter-spacing:-.035em;text-wrap:balance}
+.faq details{border-top:1px solid var(--rule)}
+.faq .inner>div{border-bottom:1px solid var(--rule);align-self:start}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;font-family:'Bodoni Moda',serif;font-size:clamp(20px,1.8vw,25px)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:'Hanken Grotesk',sans-serif;font-weight:300;font-size:28px;color:var(--gold);transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 24px;max-width:60ch;color:#b9bfd9}
 .partner a{display:inline-flex;align-items:center;text-decoration:none}
 .partner img{height:22px;width:auto;display:block}
 .partner b{font-family:'Bodoni Moda',serif;font-weight:400;font-size:21px}
 .f-copy{font-size:13px;color:var(--dim)}
 @media (max-width:620px){.f-cols{grid-template-columns:1fr}}
+@media (max-width:620px){.show-meta{flex-direction:column;gap:4px}.show-meta span:not(:first-child){padding-left:0;margin-left:0;border-left:0}}
+@media (max-width:860px){.faq .inner{grid-template-columns:1fr}.facts-row{font-size:14px}}
 
 @media (max-width:860px){
   .sketch{width:120vw;right:-40vw;top:10vh;opacity:.7}
@@ -252,13 +279,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="top">
     <div class="wordmark">Da Vinci <i>Genius</i></div>
-    <a href="#tickets">Tickets</a>
+    <a class="nav-cta" href="#tickets">Tickets kopen</a>
   </div>
 
   <div class="hero-copy">
+    <div class="show-id">
+      <p class="show-name">Da Vinci <i>Genius</i> Amsterdam</p>
+      <p class="show-meta"><span>Immersive Experience</span><span>1 december 2026 – 28 februari 2027</span></p>
+    </div>
     <h1><span>Leonardo liet het onaf.</span><span>Jij tekent verder.</span></h1>
     <div class="sub">
-      <p><strong>Binnenkort in Amsterdam.</strong> Een immersive show in Room Mate Aitana aan het IJ, waar de muren reageren op je handen.</p>
+      <p class="lede">Stap in de wereld van Da Vinci. Een interactieve immersive experience vol licht en geluid, waarin zijn kunst en uitvindingen reageren op jouw bewegingen.</p>
+      <ul class="facts-row">
+        <li>Room Mate Aitana, Amsterdam</li>
+        <li data-show hidden>Vanaf <span data-info="prijs"></span></li>
+        <li data-show hidden><span data-info="duur"></span></li>
+      </ul>
+      <a class="cta" href="#tickets">Tickets kopen <svg viewBox="0 0 22 22" aria-hidden="true"><path d="M11 3v15M5 12l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
     </div>
   </div>
   <div class="hint"><div class="hand">probeer maar</div><small>Beweeg over het beeld</small></div>
@@ -271,6 +308,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="note">
       <span class="hand mirror">da mano</span>
       Leonardo schreef zijn notities in spiegelschrift en liet honderden schetsen onaf. Da Vinci Genius begint precies daar. Je loopt door zalen vol licht en geluid, en overal waar je een muur aanraakt, gaat zijn werk verder.
+      <br><a class="cta" href="#tickets">Tickets kopen <svg viewBox="0 0 22 22" aria-hidden="true"><path d="M11 3v15M5 12l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
     </div>
   </div>
   <div class="page">
@@ -319,7 +357,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="bridge">Dat gebouw staat aan het IJ.</p>
     <h2>Room Mate Aitana<small>op het IJdok, een kwartier lopen van Centraal</small></h2>
     <div class="when">
-      <div><b>Opening</b>Datum volgt snel</div>
+      <div data-show hidden><b>Speelperiode</b><span data-info="periode"></span></div>
       <div><b>Tickets</b>Per dag en tijdslot</div>
     </div>
   </div>
@@ -348,6 +386,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div><dt>Dag</dt><dd id="sum-day" class="empty">Nog niet gekozen</dd></div>
           <div><dt>Tijd</dt><dd id="sum-time" class="empty">Nog niet gekozen</dd></div>
           <div><dt>Locatie</dt><dd>Room Mate Aitana</dd></div>
+          <div data-show hidden><dt>Duur</dt><dd data-info="duur"></dd></div>
+          <div data-show hidden><dt>Prijs</dt><dd>vanaf <span data-info="prijs"></span></dd></div>
         </dl>
         <!-- TIQQO: vervang de link hieronder (en in de navigatie bovenaan en in TICKETS.url in het script) door jullie ticketlink -->
         <a class="buy" id="buy" href="https://TIQQO-LINK-HIER" target="_blank" rel="noopener"><span id="buy-label">Tickets kopen</span>
@@ -359,13 +399,54 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<section class="faq" id="vragen">
+  <div class="inner">
+    <h2>Goed om te weten</h2>
+    <div>
+      <details>
+        <summary>Wat doe je in de show?</summary>
+        <p>Je loopt door zalen vol beeld en geluid. Je raakt muren aan die reageren, zet Leonardo's vliegmachines in beweging en maakt zijn onvoltooide tekeningen af. De muziek is gemaakt door de GRAMMY-genomineerde producer Sasha.</p>
+      </details>
+      <details>
+        <summary>Hoe werkt een tijdslot?</summary>
+        <p>Bij het bestellen kies je een dag en een starttijd. Op dat moment ga je naar binnen.</p>
+      </details>
+      <details>
+        <summary>Hoe kom ik er?</summary>
+        <p>Room Mate Aitana ligt op het IJdok in Amsterdam, een kwartier lopen van Amsterdam Centraal.</p>
+      </details>
+      <details>
+        <summary>Is de show al eerder te zien geweest?</summary>
+        <p>Ja. Da Vinci Genius stond eerder in Amsterdam, Berlijn, Tallinn, Riga, Delhi, Mumbai en Florida. In 2022 won de show de Art Directors Club-prijs voor beste immersive ervaring en de Creative Pool-prijs voor experimenteel ontwerp.</p>
+      </details>
+      <!-- NOG INVULLEN: zet het antwoord in de <p> en haal het woord hidden weg, dan verschijnt de vraag op de pagina -->
+      <details hidden>
+        <summary>Is de show geschikt voor kinderen?</summary>
+        <p>ANTWOORD</p>
+      </details>
+      <details hidden>
+        <summary>Is de locatie toegankelijk met een rolstoel?</summary>
+        <p>ANTWOORD</p>
+      </details>
+      <details hidden>
+        <summary>In welke taal is de show?</summary>
+        <p>ANTWOORD</p>
+      </details>
+      <details hidden>
+        <summary>Kan ik mijn ticket omboeken?</summary>
+        <p>ANTWOORD</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="f-top">
     <div class="f-mark">Da Vinci <i>Genius</i><span>Amsterdam</span></div>
     <a class="f-tix" href="#tickets">Tickets kiezen</a>
   </div>
   <div class="f-cols">
-    <div><small>Een show van</small><p>Phoenix Immersive</p></div>
+    <div><small>Een show van</small><p>Amsterdam Immersive Experience</p></div>
     <div><small>Locatie</small><p>Room Mate Aitana<br>IJdok, Amsterdam</p></div>
     <div class="partner"><small>Ticketing partner</small>
       <!-- Tiqqo-logo van hun eigen site. Laadt het niet, dan blijft het woord Tiqqo staan. -->
@@ -485,17 +566,29 @@ requestAnimationFrame(f2);
 
 
 /* ---------- tickets: kies dag en tijd, daarna door naar Tiqqo ---------- */
+/* Praktische info. Vul in, dan verschijnt het vanzelf bovenaan, bij de locatie en op de ticketkaart. Leeg laten = niet tonen. */
+const SHOW={
+  prijs:'',      // bijv. '€19,50'
+  duur:'',       // bijv. 'ongeveer 60 minuten'
+  periode:'1 december 2026 t/m 28 februari 2027'
+};
+document.querySelectorAll('[data-info]').forEach(el=>{
+  const v=SHOW[el.dataset.info],wrap=el.closest('[data-show]')||el;
+  if(v){el.textContent=v;wrap.hidden=false}else{wrap.hidden=true}
+});
+
 const TICKETS={
   url:'https://TIQQO-LINK-HIER',           // jullie Tiqqo-link
-  start:null,                              // eerste speeldag, bijv. '2026-10-17'. Leeg = vandaag
+  start:'2026-12-01',                      // eerste speeldag
   days:14,                                 // hoeveel dagen tonen
   closed:[],                               // gesloten weekdagen: 0=zo,1=ma ... bijv. [1,2]
-  times:['11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00']
+  times:['11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00'],
+  linkFor:null   // als Tiqqo een link per dag/tijd heeft: (datum 'JJJJ-MM-DD', tijd 'UU:MM') => link
 };
 (function(){
   const daysEl=document.getElementById('days'),timesEl=document.getElementById('times'),
         sumDay=document.getElementById('sum-day'),sumTime=document.getElementById('sum-time'),
-        buyLabel=document.getElementById('buy-label'),monthEl=document.getElementById('month');
+        buyLabel=document.getElementById('buy-label'),monthEl=document.getElementById('month'),buy=document.getElementById('buy');
   const wd=new Intl.DateTimeFormat('nl-NL',{weekday:'short'}),
         long=new Intl.DateTimeFormat('nl-NL',{weekday:'long',day:'numeric',month:'long'}),
         mon=new Intl.DateTimeFormat('nl-NL',{month:'long',year:'numeric'});
@@ -509,6 +602,8 @@ const TICKETS={
     sumTime.textContent=time||'Nog niet gekozen';sumTime.classList.toggle('empty',!time);
     timesEl.dataset.off=day?'false':'true';
     buyLabel.textContent=day&&time?'Verder naar tickets':'Tickets kopen';
+    const iso=day?`${day.getFullYear()}-${String(day.getMonth()+1).padStart(2,'0')}-${String(day.getDate()).padStart(2,'0')}`:null;
+    buy.href=(TICKETS.linkFor&&iso&&time)?TICKETS.linkFor(iso,time):TICKETS.url;
   }
   list.forEach(dt=>{
     const b=document.createElement('button');b.type='button';b.className='day';b.setAttribute('aria-pressed','false');
@@ -524,6 +619,9 @@ const TICKETS={
   });
   months();update();
 })();
+
+/* menubalk: krijgt een achtergrond zodra je scrolt */
+(function(){const t=document.querySelector('.top');const f=()=>t.classList.toggle('scrolled',scrollY>40);f();addEventListener('scroll',f,{passive:true})})();
 </script>
 </body>
 </html>
