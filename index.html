@@ -168,22 +168,29 @@ a{color:inherit}
 .list .head p{font-size:17px;max-width:34ch;color:#2d3045}
 .booker>*{min-width:0}
 .booker{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(24px,4vw,56px);align-items:start}
-.step{margin-bottom:40px}
-.step h3{display:flex;align-items:baseline;gap:12px;font-weight:500;font-size:16px;margin-bottom:16px;color:var(--night)}
-.step h3 span{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-style:italic;font-weight:400;font-size:22px;color:#8a6a2c}
-.month{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-style:italic;font-size:15px;color:#44475a;margin-left:auto}
-.days{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 14px;scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:#cfc5ad transparent}
-.day{flex:none;scroll-snap-align:start;width:76px;padding:12px 0 10px;display:flex;flex-direction:column;align-items:center;gap:2px;background:transparent;border:1px solid #cfc5ad;border-radius:2px;color:var(--night);font:inherit;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
-.day small{font-size:12px;letter-spacing:.06em;color:#44475a;text-transform:lowercase}
-.day b{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-weight:500;font-size:34px;line-height:1;font-variant-numeric:lining-nums}
+.step{margin-bottom:44px}
+.step h3{display:flex;align-items:baseline;gap:14px;font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-weight:600;font-size:clamp(24px,2.2vw,30px);line-height:1.1;margin-bottom:18px;color:var(--night)}
+.step h3 span{display:inline-grid;place-items:center;width:34px;height:34px;flex:none;border-radius:50%;background:var(--night);color:var(--paper);font-family:'Hanken Grotesk',sans-serif;font-weight:500;font-size:16px;transform:translateY(-3px)}
+.months{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.mbtn{padding:16px 10px;background:transparent;border:1px solid #bfb497;border-radius:2px;font:inherit;color:var(--night);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;transition:background .2s,border-color .2s,color .2s}
+.mbtn b{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-weight:600;font-size:clamp(22px,2vw,28px);line-height:1.1}
+.mbtn small{font-size:14px;color:#44475a}
+.mbtn:hover{border-color:var(--night)}
+.mbtn[aria-pressed="true"]{background:var(--lapis);border-color:var(--lapis);color:var(--paper)}
+.mbtn[aria-pressed="true"] small{color:#c9cfee}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.cal .wd{text-align:center;font-size:14px;font-weight:500;color:#44475a;padding-bottom:4px}
+.day{height:58px;max-width:100%;display:grid;place-items:center;background:transparent;border:1px solid #bfb497;border-radius:2px;font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-weight:600;font-size:clamp(20px,2vw,26px);color:var(--night);cursor:pointer;transition:background .2s,border-color .2s,color .2s}
 .day:hover{border-color:var(--night)}
 .day[aria-pressed="true"]{background:var(--lapis);border-color:var(--lapis);color:var(--paper)}
-.day[aria-pressed="true"] small{color:#c9cfee}
+.day:disabled{opacity:.3;cursor:default;border-style:dashed}
 .times{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
-.time{padding:14px 0;background:transparent;border:1px solid #cfc5ad;border-radius:2px;font:inherit;font-size:17px;font-variant-numeric:tabular-nums;color:var(--night);cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.time{padding:16px 0;background:transparent;border:1px solid #bfb497;border-radius:2px;font:inherit;font-size:19px;font-weight:500;font-variant-numeric:tabular-nums;color:var(--night);cursor:pointer;transition:background .2s,border-color .2s,color .2s}
 .time:hover{border-color:var(--night)}
 .time[aria-pressed="true"]{background:var(--lapis);border-color:var(--lapis);color:var(--paper)}
-.times[data-off="true"] .time{opacity:.4;pointer-events:none}
+.times[data-off="true"] .time{opacity:.35;pointer-events:none}
+@media (max-width:620px){.day{height:auto;aspect-ratio:1/1}}
+.hint-off{font-size:15px;color:#44475a;margin:-6px 0 12px}
 .ticket{position:sticky;top:24px;background:var(--night);color:var(--paper);padding:28px;border-radius:2px;display:flex;flex-direction:column;gap:22px}
 .ticket .t-name{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:26px;line-height:1.1}
 .ticket .t-name i{color:var(--gold)}
@@ -372,11 +379,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="booker">
       <div>
         <div class="step">
-          <h3><span>1</span>Kies een dag <em class="month" id="month"></em></h3>
-          <div class="days" id="days" role="group" aria-label="Dag"></div>
+          <h3><span>1</span>Kies een maand</h3>
+          <div class="months" id="months" role="group" aria-label="Maand"></div>
         </div>
         <div class="step">
-          <h3><span>2</span>Kies een tijd</h3>
+          <h3><span>2</span>Kies een dag</h3>
+          <div class="cal" id="cal" role="group" aria-label="Dag"></div>
+        </div>
+        <div class="step">
+          <h3><span>3</span>Kies een tijd</h3>
+          <p class="hint-off" id="time-hint">Kies eerst een dag.</p>
           <div class="times" id="times" role="group" aria-label="Tijd" data-off="true"></div>
         </div>
       </div>
@@ -580,44 +592,61 @@ document.querySelectorAll('[data-info]').forEach(el=>{
 const TICKETS={
   url:'https://TIQQO-LINK-HIER',           // jullie Tiqqo-link
   start:'2026-12-01',                      // eerste speeldag
-  days:14,                                 // hoeveel dagen tonen
+  end:'2027-02-28',                        // laatste speeldag
   closed:[],                               // gesloten weekdagen: 0=zo,1=ma ... bijv. [1,2]
+  closedDates:[],                          // losse gesloten dagen, bijv. ['2026-12-25','2027-01-01']
   times:['11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00'],
   linkFor:null   // als Tiqqo een link per dag/tijd heeft: (datum 'JJJJ-MM-DD', tijd 'UU:MM') => link
 };
 (function(){
-  const daysEl=document.getElementById('days'),timesEl=document.getElementById('times'),
-        sumDay=document.getElementById('sum-day'),sumTime=document.getElementById('sum-time'),
-        buyLabel=document.getElementById('buy-label'),monthEl=document.getElementById('month'),buy=document.getElementById('buy');
-  const wd=new Intl.DateTimeFormat('nl-NL',{weekday:'short'}),
-        long=new Intl.DateTimeFormat('nl-NL',{weekday:'long',day:'numeric',month:'long'}),
-        mon=new Intl.DateTimeFormat('nl-NL',{month:'long',year:'numeric'});
-  let d=TICKETS.start?new Date(TICKETS.start+'T12:00'):new Date();d.setHours(12,0,0,0);
-  const list=[];
-  while(list.length<TICKETS.days){if(!TICKETS.closed.includes(d.getDay()))list.push(new Date(d));d.setDate(d.getDate()+1)}
+  const $=id=>document.getElementById(id);
+  const monthsEl=$('months'),calEl=$('cal'),timesEl=$('times'),hint=$('time-hint'),
+        sumDay=$('sum-day'),sumTime=$('sum-time'),buyLabel=$('buy-label'),buy=$('buy');
+  const long=new Intl.DateTimeFormat('nl-NL',{weekday:'long',day:'numeric',month:'long'});
+  const iso=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  const start=new Date(TICKETS.start+'T12:00'),end=new Date(TICKETS.end+'T12:00');
+  const today=new Date();today.setHours(0,0,0,0);
+  const open=d=>d>=start&&d<=end&&d>=today&&!TICKETS.closed.includes(d.getDay())&&!TICKETS.closedDates.includes(iso(d));
+  const months=[];for(let m=new Date(start.getFullYear(),start.getMonth(),1);m<=end;m=new Date(m.getFullYear(),m.getMonth()+1,1))months.push(m);
+  let month=months.find(m=>{const last=new Date(m.getFullYear(),m.getMonth()+1,0,12);return last>=today})||months[0];
   let day=null,time=null;
-  function months(){const a=mon.format(list[0]),b=mon.format(list[list.length-1]);monthEl.textContent=a===b?a:a.split(' ')[0]+' – '+b}
   function update(){
     sumDay.textContent=day?long.format(day):'Nog niet gekozen';sumDay.classList.toggle('empty',!day);
     sumTime.textContent=time||'Nog niet gekozen';sumTime.classList.toggle('empty',!time);
-    timesEl.dataset.off=day?'false':'true';
+    timesEl.dataset.off=day?'false':'true';hint.hidden=!!day;
     buyLabel.textContent=day&&time?'Verder naar tickets':'Tickets kopen';
-    const iso=day?`${day.getFullYear()}-${String(day.getMonth()+1).padStart(2,'0')}-${String(day.getDate()).padStart(2,'0')}`:null;
-    buy.href=(TICKETS.linkFor&&iso&&time)?TICKETS.linkFor(iso,time):TICKETS.url;
+    buy.href=(TICKETS.linkFor&&day&&time)?TICKETS.linkFor(iso(day),time):TICKETS.url;
   }
-  list.forEach(dt=>{
-    const b=document.createElement('button');b.type='button';b.className='day';b.setAttribute('aria-pressed','false');
-    b.setAttribute('aria-label',long.format(dt));
-    b.innerHTML=`<small>${wd.format(dt).replace('.','')}</small><b>${dt.getDate()}</b><small>${dt.toLocaleDateString('nl-NL',{month:'short'}).replace('.','')}</small>`;
-    b.addEventListener('click',()=>{daysEl.querySelectorAll('.day').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');day=dt;update()});
-    daysEl.appendChild(b);
-  });
+  function drawMonths(){
+    monthsEl.innerHTML='';
+    months.forEach(m=>{
+      const b=document.createElement('button');b.type='button';b.className='mbtn';
+      b.setAttribute('aria-pressed',String(m===month));
+      b.innerHTML=`<b>${m.toLocaleDateString('nl-NL',{month:'long'}).replace(/^./,c=>c.toUpperCase())}</b><small>${m.getFullYear()}</small>`;
+      b.addEventListener('click',()=>{month=m;if(day&&day.getMonth()!==m.getMonth()){day=null}drawMonths();drawCal();update()});
+      monthsEl.appendChild(b);
+    });
+  }
+  function drawCal(){
+    calEl.innerHTML='';
+    ['ma','di','wo','do','vr','za','zo'].forEach(w=>{const e=document.createElement('div');e.className='wd';e.textContent=w;calEl.appendChild(e)});
+    const first=new Date(month.getFullYear(),month.getMonth(),1,12),days=new Date(month.getFullYear(),month.getMonth()+1,0).getDate();
+    for(let i=0;i<(first.getDay()+6)%7;i++)calEl.appendChild(document.createElement('span'));
+    for(let n=1;n<=days;n++){
+      const d=new Date(month.getFullYear(),month.getMonth(),n,12),b=document.createElement('button');
+      b.type='button';b.className='day';b.textContent=n;b.setAttribute('aria-label',long.format(d));
+      b.setAttribute('aria-pressed',String(!!day&&iso(day)===iso(d)));
+      if(!open(d))b.disabled=true;
+      b.addEventListener('click',()=>{day=d;calEl.querySelectorAll('.day').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');update()});
+      calEl.appendChild(b);
+    }
+  }
   TICKETS.times.forEach(t=>{
     const b=document.createElement('button');b.type='button';b.className='time';b.textContent=t;b.setAttribute('aria-pressed','false');
     b.addEventListener('click',()=>{timesEl.querySelectorAll('.time').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');time=t;update()});
     timesEl.appendChild(b);
   });
-  months();update();
+  drawMonths();drawCal();update();
 })();
 
 /* menubalk: krijgt een achtergrond zodra je scrolt */
