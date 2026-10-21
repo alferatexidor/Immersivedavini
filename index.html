@@ -66,7 +66,16 @@ a{color:inherit}
 .top>*{pointer-events:auto}
 .wordmark{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:21px;letter-spacing:.01em}
 .wordmark i{color:var(--gold)}
-.top .nav-cta{font-size:15px;font-weight:500;text-decoration:none;background:var(--gold);color:var(--night);padding:12px 22px;border-radius:2px;transition:background .25s}
+.top .right{display:flex;align-items:center;gap:12px}
+.lang{display:flex;border:1px solid rgba(236,229,213,.35);border-radius:2px;overflow:hidden;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.lang button{flex:none;white-space:nowrap;display:flex;align-items:center;gap:7px;padding:10px 12px;background:transparent;border:0;color:var(--paper);font:inherit;font-size:14px;font-weight:500;cursor:pointer;transition:background .2s,color .2s}
+.lang button+button{border-left:1px solid rgba(236,229,213,.35)}
+.lang button svg{width:18px;height:12px;border-radius:1px;flex:none}
+.lang button[aria-pressed="true"]{background:rgba(236,229,213,.16)}
+.lang button[aria-pressed="false"]{color:var(--dim)}
+.lang button:hover{color:var(--paper)}
+@media (max-width:420px){.lang button{padding:9px 8px;gap:5px;font-size:13px}.top .nav-cta{padding:10px 13px;font-size:14px}.top .right{gap:8px}}
+.top .nav-cta{white-space:nowrap;flex:none;font-size:15px;font-weight:500;text-decoration:none;background:var(--gold);color:var(--night);padding:12px 22px;border-radius:2px;transition:background .25s}
 .top .nav-cta:hover{background:#efc77a}
 
 .hero-copy{position:relative;z-index:5;padding:clamp(110px,16vh,150px) clamp(18px,4vw,60px) clamp(36px,7vh,88px);max-width:min(980px,100%);pointer-events:none}
@@ -115,7 +124,13 @@ a{color:inherit}
 .act img{width:100%;aspect-ratio:16/10;object-fit:cover;box-shadow:0 30px 80px -20px rgba(120,90,255,.45)}
 
 /* =============== THE ROOM (scroll into the projections) =============== */
-.room-wrap{height:340vh;position:relative}
+.room-wrap{height:210vh;position:relative}
+.room-cue{position:absolute;z-index:4;top:clamp(80px,13vh,120px);left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:15px;font-weight:500;color:var(--paper);text-shadow:0 2px 16px rgba(0,0,0,.9);pointer-events:none;transition:opacity .5s}
+.room-cue svg{width:22px;height:22px;animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateY(6px)}}
+.room-cue.off{opacity:0}
+.room-bar{position:absolute;z-index:4;left:0;bottom:0;height:3px;width:100%;background:rgba(236,229,213,.15)}
+.room-bar i{display:block;height:100%;width:100%;background:var(--gold);transform-origin:left;transform:scaleX(0)}
 .stage{position:sticky;top:0;height:100vh;overflow:hidden;perspective:var(--persp,900px);background:#000}
 .room{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
 .face{position:absolute;background-size:130% auto;background-position:50% 50%;filter:saturate(1.3);animation:project 24s ease-in-out infinite alternate}
@@ -126,7 +141,7 @@ a{color:inherit}
 .f-right{left:calc(var(--w) - var(--d));top:0;width:var(--d);height:var(--h);transform-origin:right center;transform:rotateY(-90deg);--dark:.35}
 .f-floor{left:0;top:calc(var(--h) - var(--d));width:var(--w);height:var(--d);transform-origin:bottom center;transform:rotateX(90deg);--dark:.45}
 .f-ceil{left:0;top:0;width:var(--w);height:var(--d);transform-origin:top center;transform:rotateX(-90deg);--dark:.55}
-.stage canvas{position:absolute;inset:0;width:100%;height:100%;z-index:3;cursor:crosshair}
+.stage canvas{display:none}
 .stage .vig{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse at center,transparent 45%,rgba(0,0,0,.6))}
 .room-text{position:absolute;z-index:4;left:0;right:0;bottom:clamp(40px,10vh,110px);text-align:center;pointer-events:none;padding:0 18px}
 .room-text p{position:absolute;left:0;right:0;font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-size:clamp(34px,5.6vw,92px);line-height:1;letter-spacing:-.015em;text-shadow:0 4px 40px rgba(0,0,0,.8);opacity:0;transform:translateY(20px);transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1);bottom:0}
@@ -170,7 +185,7 @@ a{color:inherit}
 .booker{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(24px,4vw,56px);align-items:start}
 .step{margin-bottom:44px}
 .step h3{display:flex;align-items:baseline;gap:14px;font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-weight:600;font-size:clamp(24px,2.2vw,30px);line-height:1.1;margin-bottom:18px;color:var(--night)}
-.step h3 span{display:inline-grid;place-items:center;width:34px;height:34px;flex:none;border-radius:50%;background:var(--night);color:var(--paper);font-family:'Hanken Grotesk',sans-serif;font-weight:500;font-size:16px;transform:translateY(-3px)}
+.step h3 .n{display:inline-grid;place-items:center;width:34px;height:34px;flex:none;border-radius:50%;background:var(--night);color:var(--paper);font-family:'Hanken Grotesk',sans-serif;font-weight:500;font-size:16px;transform:translateY(-3px)}
 .months{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
 .mbtn{padding:16px 10px;background:transparent;border:1px solid #bfb497;border-radius:2px;font:inherit;color:var(--night);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;transition:background .2s,border-color .2s,color .2s}
 .mbtn b{font-family:'EB Garamond',Georgia,'Times New Roman',serif;font-weight:600;font-size:clamp(22px,2vw,28px);line-height:1.1}
@@ -286,47 +301,53 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <div class="top">
     <div class="wordmark">Da Vinci <i>Genius</i></div>
-    <a class="nav-cta" href="#tickets">Tickets kopen</a>
+    <div class="right">
+    <div class="lang" role="group" aria-label="Taal / Language">
+      <button type="button" data-lang="nl" aria-pressed="true"><svg viewBox="0 0 9 6" aria-hidden="true"><rect width="9" height="2" fill="#AE1C28"/><rect y="2" width="9" height="2" fill="#fff"/><rect y="4" width="9" height="2" fill="#21468B"/></svg>NL</button>
+      <button type="button" data-lang="en" aria-pressed="false"><svg viewBox="0 0 60 30" aria-hidden="true"><clipPath id="uk"><path d="M0 0v30h60V0z"/></clipPath><g clip-path="url(#uk)"><path d="M0 0v30h60V0z" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" stroke="#C8102E" stroke-width="3"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/></g></svg>EN</button>
+    </div>
+    <a class="nav-cta" href="#tickets" data-i18n="buy">Tickets kopen</a>
+    </div>
   </div>
 
   <div class="hero-copy">
     <div class="show-id">
       <p class="show-name">Da Vinci <i>Genius</i> Amsterdam</p>
-      <p class="show-meta"><span>Immersive Experience</span><span>1 december 2026 – 28 februari 2027</span></p>
+      <p class="show-meta"><span>Immersive Experience</span><span data-i18n="dates">1 december 2026 – 28 februari 2027</span></p>
     </div>
-    <h1><span>Leonardo liet het onaf.</span><span>Jij tekent verder.</span></h1>
+    <h1><span data-i18n="h1a">Leonardo liet het onaf.</span><span data-i18n="h1b">Jij tekent verder.</span></h1>
     <div class="sub">
-      <p class="lede">Stap in de wereld van Da Vinci. Een interactieve immersive experience vol licht en geluid, waarin zijn kunst en uitvindingen reageren op jouw bewegingen.</p>
+      <p class="lede" data-i18n="lede">Stap in de wereld van Da Vinci. Een interactieve immersive experience vol licht en geluid, waarin zijn kunst en uitvindingen reageren op jouw bewegingen.</p>
       <ul class="facts-row">
         <li>Room Mate Aitana, Amsterdam</li>
-        <li data-show hidden>Vanaf <span data-info="prijs"></span></li>
+        <li data-show hidden><span data-i18n="from">Vanaf</span> <span data-info="prijs"></span></li>
         <li data-show hidden><span data-info="duur"></span></li>
       </ul>
-      <a class="cta" href="#tickets">Tickets kopen <svg viewBox="0 0 22 22" aria-hidden="true"><path d="M11 3v15M5 12l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+      <a class="cta" href="#tickets"><span data-i18n="buy">Tickets kopen</span> <svg viewBox="0 0 22 22" aria-hidden="true"><path d="M11 3v15M5 12l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
     </div>
   </div>
-  <div class="hint"><div class="hand">probeer maar</div><small>Beweeg over het beeld</small></div>
+  <div class="hint"><div class="hand" data-i18n="try">probeer maar</div><small data-i18n="tryHint">Beweeg over het beeld</small></div>
 </header>
 
 <section class="spread">
   <div class="page">
-    <p class="big">Hij ontwierp een vliegmachine die nooit van de grond kwam.</p>
-    <p class="big">Hier stijgt hij op zodra jij hem aanraakt.</p>
+    <p class="big" data-i18n="big1">Hij ontwierp een vliegmachine die nooit van de grond kwam.</p>
+    <p class="big" data-i18n="big2">Hier stijgt hij op zodra jij hem aanraakt.</p>
     <div class="note">
       <span class="hand mirror">da mano</span>
-      Leonardo schreef zijn notities in spiegelschrift en liet honderden schetsen onaf. Da Vinci Genius begint precies daar. Je loopt door zalen vol licht en geluid, en overal waar je een muur aanraakt, gaat zijn werk verder.
-      <br><a class="cta" href="#tickets">Tickets kopen <svg viewBox="0 0 22 22" aria-hidden="true"><path d="M11 3v15M5 12l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
+      <span data-i18n="note">Leonardo schreef zijn notities in spiegelschrift en liet honderden schetsen onaf. Da Vinci Genius begint precies daar. Je loopt door zalen vol licht en geluid, en overal waar je een muur aanraakt, gaat zijn werk verder.</span>
+      <br><a class="cta" href="#tickets"><span data-i18n="buy">Tickets kopen</span> <svg viewBox="0 0 22 22" aria-hidden="true"><path d="M11 3v15M5 12l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></a>
     </div>
   </div>
   <div class="page">
     <figure>
-      <img src="https://phoeniximmersive.com/assets/pi-flying-machine-touch-CbL-IFDp.jpg" alt="Een bezoeker tekent met licht over een schets van een vliegmachine" loading="lazy">
-      <figcaption>Een bezoeker trekt een lijn door een ontwerp uit 1505. Het apparaat komt in beweging.</figcaption>
+      <img src="https://phoeniximmersive.com/assets/pi-flying-machine-touch-CbL-IFDp.jpg" alt="Een bezoeker tekent met licht over een schets van een vliegmachine" data-i18n-alt="altFly" loading="lazy">
+      <figcaption data-i18n="figcap">Een bezoeker trekt een lijn door een ontwerp uit 1505. Het apparaat komt in beweging.</figcaption>
     </figure>
   </div>
 </section>
 
-<section class="room-wrap" id="roomwrap" aria-label="Loop de zaal in">
+<section class="room-wrap" id="roomwrap" aria-label="Loop de zaal in" data-i18n-aria="ariaRoom">
   <div class="stage" id="stage">
     <div class="room" id="room">
       <div class="face f-back"  style="background-image:url(https://phoeniximmersive.com/assets/dv-cosmos-room-CFkG-W0M.jpeg)"></div>
@@ -337,9 +358,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="vig"></div>
     <canvas id="ink2" aria-hidden="true"></canvas>
+    <div class="room-cue" id="room-cue"><span data-i18n="roomCue">Scroll verder en loop de zaal in</span><svg viewBox="0 0 22 22" aria-hidden="true"><path d="M11 3v15M5 12l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></div>
+    <div class="room-bar" aria-hidden="true"><i id="room-bar"></i></div>
     <div class="room-text">
-      <p>Licht op elke muur.<small>Voor je, naast je, onder je voeten en boven je hoofd.</small></p>
-      <p>Stap binnen en laat je verbazen.</p>
+      <p data-i18n="room1">Licht op elke muur.<small>Voor je, naast je, onder je voeten en boven je hoofd.</small></p>
+      <p data-i18n="room2">Stap binnen en laat je verbazen.</p>
     </div>
   </div>
 </section>
@@ -347,8 +370,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <div class="bleed">
-  <img src="https://phoeniximmersive.com/assets/pi-lastsupper-room-ZgCimRH2.jpg" alt="Een bezoeker zit voor een wandvullende projectie van Het Laatste Avondmaal" loading="lazy">
-  <p>Het Laatste Avondmaal, op de schaal van een gebouw.</p>
+  <img src="https://phoeniximmersive.com/assets/pi-lastsupper-room-ZgCimRH2.jpg" alt="Een bezoeker zit voor een wandvullende projectie van Het Laatste Avondmaal" data-i18n-alt="altSupper" loading="lazy">
+  <p data-i18n="supper">Het Laatste Avondmaal, op de schaal van een gebouw.</p>
 </div>
 
 
@@ -361,11 +384,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <line x1="102" y1="102" x2="498" y2="498"/><line x1="498" y1="102" x2="102" y2="498"/>
   </svg>
   <div class="inner">
-    <p class="bridge">Dat gebouw staat aan het IJ.</p>
-    <h2>Room Mate Aitana<small>op het IJdok, een kwartier lopen van Centraal</small></h2>
+    <p class="bridge" data-i18n="bridge">Dat gebouw staat aan het IJ.</p>
+    <h2>Room Mate Aitana<small data-i18n="venueSub">op het IJdok, een kwartier lopen van Centraal</small></h2>
     <div class="when">
-      <div data-show hidden><b>Speelperiode</b><span data-info="periode"></span></div>
-      <div><b>Tickets</b>Per dag en tijdslot</div>
+      <div data-show hidden><b data-i18n="period">Speelperiode</b><span data-info="periode"></span></div>
+      <div><b>Tickets</b><span data-i18n="perSlot">Per dag en tijdslot</span></div>
     </div>
   </div>
 </section>
@@ -373,39 +396,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="list" id="tickets">
   <div class="inner">
     <div class="head">
-      <h2>Kies je dag en je tijd.</h2>
-      <p>Je koopt een ticket voor een vaste dag en tijd. Kies hier wanneer je wilt komen en rond je bestelling af bij Tiqqo.</p>
+      <h2 data-i18n="tixH">Kies je dag en je tijd.</h2>
+      <p data-i18n="tixP">Je koopt een ticket voor een vaste dag en tijd. Kies hier wanneer je wilt komen en rond je bestelling af bij Tiqqo.</p>
     </div>
     <div class="booker">
       <div>
         <div class="step">
-          <h3><span>1</span>Kies een maand</h3>
-          <div class="months" id="months" role="group" aria-label="Maand"></div>
+          <h3><span class="n">1</span><span data-i18n="step1">Kies een maand</span></h3>
+          <div class="months" id="months" role="group" aria-label="Maand" data-i18n-aria="ariaMonth"></div>
         </div>
         <div class="step">
-          <h3><span>2</span>Kies een dag</h3>
-          <div class="cal" id="cal" role="group" aria-label="Dag"></div>
+          <h3><span class="n">2</span><span data-i18n="step2">Kies een dag</span></h3>
+          <div class="cal" id="cal" role="group" aria-label="Dag" data-i18n-aria="ariaDay"></div>
         </div>
         <div class="step">
-          <h3><span>3</span>Kies een tijd</h3>
-          <p class="hint-off" id="time-hint">Kies eerst een dag.</p>
-          <div class="times" id="times" role="group" aria-label="Tijd" data-off="true"></div>
+          <h3><span class="n">3</span><span data-i18n="step3">Kies een tijd</span></h3>
+          <p class="hint-off" id="time-hint" data-i18n="dayFirst">Kies eerst een dag.</p>
+          <div class="times" id="times" role="group" aria-label="Tijd" data-i18n-aria="ariaTime" data-off="true"></div>
         </div>
       </div>
       <aside class="ticket" aria-live="polite">
         <div class="t-name">Da Vinci <i>Genius</i><br>Amsterdam</div>
         <dl>
-          <div><dt>Dag</dt><dd id="sum-day" class="empty">Nog niet gekozen</dd></div>
-          <div><dt>Tijd</dt><dd id="sum-time" class="empty">Nog niet gekozen</dd></div>
-          <div><dt>Locatie</dt><dd>Room Mate Aitana</dd></div>
-          <div data-show hidden><dt>Duur</dt><dd data-info="duur"></dd></div>
-          <div data-show hidden><dt>Prijs</dt><dd>vanaf <span data-info="prijs"></span></dd></div>
+          <div><dt data-i18n="dDay">Dag</dt><dd id="sum-day" class="empty">Nog niet gekozen</dd></div>
+          <div><dt data-i18n="dTime">Tijd</dt><dd id="sum-time" class="empty">Nog niet gekozen</dd></div>
+          <div><dt data-i18n="dLoc">Locatie</dt><dd>Room Mate Aitana</dd></div>
+          <div data-show hidden><dt data-i18n="dDur">Duur</dt><dd data-info="duur"></dd></div>
+          <div data-show hidden><dt data-i18n="dPrice">Prijs</dt><dd><span data-i18n="from2">vanaf</span> <span data-info="prijs"></span></dd></div>
         </dl>
         <!-- TIQQO: vervang de link hieronder (en in de navigatie bovenaan en in TICKETS.url in het script) door jullie ticketlink -->
         <a class="buy" id="buy" href="https://TIQQO-LINK-HIER" target="_blank" rel="noopener"><span id="buy-label">Tickets kopen</span>
           <svg viewBox="0 0 28 28" aria-hidden="true"><path d="M4 14h19M16 7l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
         </a>
-        <p class="via">Bij Tiqqo kies je het aantal tickets en reken je af.</p>
+        <p class="via" data-i18n="via">Bij Tiqqo kies je het aantal tickets en reken je af.</p>
       </aside>
     </div>
   </div>
@@ -413,40 +436,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="faq" id="vragen">
   <div class="inner">
-    <h2>Goed om te weten</h2>
+    <h2 data-i18n="faqH">Goed om te weten</h2>
     <div>
       <details>
-        <summary>Wat doe je in de show?</summary>
-        <p>Je loopt door zalen vol beeld en geluid. Je raakt muren aan die reageren, zet Leonardo's vliegmachines in beweging en maakt zijn onvoltooide tekeningen af. De muziek is gemaakt door de GRAMMY-genomineerde producer Sasha.</p>
+        <summary data-i18n="q1">Wat doe je in de show?</summary>
+        <p data-i18n="q1a">Je loopt door zalen vol beeld en geluid. Je raakt muren aan die reageren, zet Leonardo's vliegmachines in beweging en maakt zijn onvoltooide tekeningen af. De muziek is gemaakt door de GRAMMY-genomineerde producer Sasha.</p>
       </details>
       <details>
-        <summary>Hoe werkt een tijdslot?</summary>
-        <p>Bij het bestellen kies je een dag en een starttijd. Op dat moment ga je naar binnen.</p>
+        <summary data-i18n="q2">Hoe werkt een tijdslot?</summary>
+        <p data-i18n="q2a">Bij het bestellen kies je een dag en een starttijd. Op dat moment ga je naar binnen.</p>
       </details>
       <details>
-        <summary>Hoe kom ik er?</summary>
-        <p>Room Mate Aitana ligt op het IJdok in Amsterdam, een kwartier lopen van Amsterdam Centraal.</p>
+        <summary data-i18n="q3">Hoe kom ik er?</summary>
+        <p data-i18n="q3a">Room Mate Aitana ligt op het IJdok in Amsterdam, een kwartier lopen van Amsterdam Centraal.</p>
       </details>
       <details>
-        <summary>Is de show al eerder te zien geweest?</summary>
-        <p>Ja. Da Vinci Genius stond eerder in Amsterdam, Berlijn, Tallinn, Riga, Delhi, Mumbai en Florida. In 2022 won de show de Art Directors Club-prijs voor beste immersive ervaring en de Creative Pool-prijs voor experimenteel ontwerp.</p>
+        <summary data-i18n="q4">Is de show al eerder te zien geweest?</summary>
+        <p data-i18n="q4a">Ja. Da Vinci Genius stond eerder in Amsterdam, Berlijn, Tallinn, Riga, Delhi, Mumbai en Florida. In 2022 won de show de Art Directors Club-prijs voor beste immersive ervaring en de Creative Pool-prijs voor experimenteel ontwerp.</p>
       </details>
       <!-- NOG INVULLEN: zet het antwoord in de <p> en haal het woord hidden weg, dan verschijnt de vraag op de pagina -->
       <details hidden>
-        <summary>Is de show geschikt voor kinderen?</summary>
-        <p>ANTWOORD</p>
+        <summary data-i18n="q5">Is de show geschikt voor kinderen?</summary>
+        <p data-i18n="q5a">ANTWOORD</p>
       </details>
       <details hidden>
-        <summary>Is de locatie toegankelijk met een rolstoel?</summary>
-        <p>ANTWOORD</p>
+        <summary data-i18n="q6">Is de locatie toegankelijk met een rolstoel?</summary>
+        <p data-i18n="q6a">ANTWOORD</p>
       </details>
       <details hidden>
-        <summary>In welke taal is de show?</summary>
-        <p>ANTWOORD</p>
+        <summary data-i18n="q7">In welke taal is de show?</summary>
+        <p data-i18n="q7a">ANTWOORD</p>
       </details>
       <details hidden>
-        <summary>Kan ik mijn ticket omboeken?</summary>
-        <p>ANTWOORD</p>
+        <summary data-i18n="q8">Kan ik mijn ticket omboeken?</summary>
+        <p data-i18n="q8a">ANTWOORD</p>
       </details>
     </div>
   </div>
@@ -455,11 +478,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <footer>
   <div class="f-top">
     <div class="f-mark">Da Vinci <i>Genius</i><span>Amsterdam</span></div>
-    <a class="f-tix" href="#tickets">Tickets kiezen</a>
+    <a class="f-tix" href="#tickets" data-i18n="chooseTix">Tickets kiezen</a>
   </div>
   <div class="f-cols">
-    <div><small>Een show van</small><p>Amsterdam Immersive Experience</p></div>
-    <div><small>Locatie</small><p>Room Mate Aitana<br>IJdok, Amsterdam</p></div>
+    <div><small data-i18n="showBy">Een show van</small><p>Amsterdam Immersive Experience</p></div>
+    <div><small data-i18n="dLoc">Locatie</small><p>Room Mate Aitana<br>IJdok, Amsterdam</p></div>
     <div class="partner"><small>Ticketing partner</small>
       <!-- Tiqqo-logo van hun eigen site. Laadt het niet, dan blijft het woord Tiqqo staan. -->
       <a href="https://tiqqo.com/" target="_blank" rel="noopener" aria-label="Tiqqo"><img src="https://tiqqo.com/assets/logos/tiqqo-logo-white.svg" alt="Tiqqo" height="22" onerror="this.replaceWith(Object.assign(document.createElement('b'),{textContent:'Tiqqo'}))"></a>
@@ -526,7 +549,7 @@ requestAnimationFrame(frame);
 
 /* ---------- de zaal: scroll je naar binnen ---------- */
 const wrap=document.getElementById('roomwrap'),stage=document.getElementById('stage'),room=document.getElementById('room');
-const lines=[...document.querySelectorAll('.room-text p')];
+const lines=[...document.querySelectorAll('.room-text p')],cue=document.getElementById('room-cue'),bar=document.getElementById('room-bar');
 let look={x:0,y:0},lookT={x:0,y:0},prog=0;
 function sizeRoom(){
   const w=stage.clientWidth,h=stage.clientHeight,d=Math.max(w,h)*1.6;
@@ -541,10 +564,10 @@ function roomFrame(){
   const r=wrap.getBoundingClientRect(),total=wrap.offsetHeight-innerHeight;
   prog=Math.min(1,Math.max(0,-r.top/total));
   look.x+=(lookT.x-look.x)*.06;look.y+=(lookT.y-look.y)*.06;
-  const ease=prog<.5?2*prog*prog:1-Math.pow(-2*prog+2,2)/2;
+  const ease=1-Math.pow(1-prog,2);
   const z=reduce?D*.3:ease*D*.78;
   room.style.transform=`translateZ(${z}px) rotateY(${look.x*-14}deg) rotateX(${look.y*9}deg)`;
-  const idx=prog<.5?0:1;
+  const idx=prog<.55?0:1;cue.classList.toggle('off',prog>.08);bar.style.transform=`scaleX(${prog})`;
   lines.forEach((p,i)=>p.classList.toggle('on',i===idx&&r.top<innerHeight*.5&&r.bottom>innerHeight*.5));
   requestAnimationFrame(roomFrame);
 }
@@ -578,16 +601,96 @@ requestAnimationFrame(f2);
 
 
 /* ---------- tickets: kies dag en tijd, daarna door naar Tiqqo ---------- */
+/* ---------- taal / language ---------- */
+const EN={
+  buy:'Buy tickets',continue:'Continue to tickets',none:'Not chosen yet',
+  dates:'1 December 2026 – 28 February 2027',
+  h1a:'Leonardo left it unfinished.',h1b:'You finish the drawing.',
+  lede:'Step into the world of Da Vinci. An interactive immersive experience full of light and sound, where his art and inventions respond to your every move.',
+  from:'From',from2:'from',
+  try:'give it a try',tryHint:'Move across the image',
+  big1:'He designed a flying machine that never left the ground.',
+  big2:'Here it takes off the moment you touch it.',
+  note:'Leonardo wrote his notes in mirror writing and left hundreds of sketches unfinished. Da Vinci Genius starts right there. You walk through rooms full of light and sound, and wherever you touch a wall, his work carries on.',
+  altFly:'A visitor draws with light over a sketch of a flying machine',
+  figcap:'A visitor draws a line through a design from 1505. The machine starts to move.',
+  ariaRoom:'Walk into the room',roomCue:'Keep scrolling to walk into the room',
+  room1:'Light on every wall.<small>In front of you, beside you, under your feet and above your head.</small>',
+  room2:'Step inside and be amazed.',
+  altSupper:'A visitor sits in front of a wall-sized projection of The Last Supper',
+  supper:'The Last Supper, at the scale of a building.',
+  bridge:'That building stands on the IJ.',
+  venueSub:'on the IJdok, a 15-minute walk from Amsterdam Central Station',
+  period:'Dates',perSlot:'By day and time slot',
+  tixH:'Choose your day and time.',
+  tixP:'Your ticket is for a set day and time. Choose when you want to come here, then complete your order with Tiqqo.',
+  step1:'Choose a month',step2:'Choose a day',step3:'Choose a time',
+  ariaMonth:'Month',ariaDay:'Day',ariaTime:'Time',
+  dayFirst:'Choose a day first.',
+  dDay:'Day',dTime:'Time',dLoc:'Location',dDur:'Duration',dPrice:'Price',
+  via:'At Tiqqo you choose the number of tickets and pay.',
+  faqH:'Good to know',
+  q1:'What do you do in the show?',
+  q1a:'You walk through rooms full of images and sound. You touch walls that respond, set Leonardo\'s flying machines in motion and finish his unfinished drawings. The music is by GRAMMY-nominated producer Sasha.',
+  q2:'How does a time slot work?',
+  q2a:'When you order, you choose a day and a start time. That is when you go in.',
+  q3:'How do I get there?',
+  q3a:'Room Mate Aitana is on the IJdok in Amsterdam, a 15-minute walk from Amsterdam Central Station.',
+  q4:'Has the show been on before?',
+  q4a:'Yes. Da Vinci Genius has been shown in Amsterdam, Berlin, Tallinn, Riga, Delhi, Mumbai and Florida. In 2022 it won the Art Directors Club award for Best Immersive Experience and the Creative Pool award for Best Experimental Design.',
+  q5:'Is the show suitable for children?',q5a:'ANSWER',
+  q6:'Is the venue wheelchair accessible?',q6a:'ANSWER',
+  q7:'What language is the show in?',q7a:'ANSWER',
+  q8:'Can I change my booking?',q8a:'ANSWER',
+  chooseTix:'Choose tickets',showBy:'A show by',
+  _title:'Da Vinci Genius Amsterdam | Immersive Experience',
+  _desc:'Da Vinci Genius Amsterdam, the interactive immersive experience. From 1 December 2026 to 28 February 2027 at Room Mate Aitana. Book your tickets by day and time slot.'
+};
+const NL={buy:'Tickets kopen',continue:'Verder naar tickets',none:'Nog niet gekozen'};
+document.querySelectorAll('[data-i18n]').forEach(el=>{NL[el.dataset.i18n]??=el.innerHTML});
+document.querySelectorAll('[data-i18n-alt]').forEach(el=>{NL[el.dataset.i18nAlt]=el.alt});
+document.querySelectorAll('[data-i18n-aria]').forEach(el=>{NL[el.dataset.i18nAria]=el.getAttribute('aria-label')});
+NL._title=document.title;NL._desc=document.querySelector('meta[name="description"]').content;
+let LANG='nl';
+const T=k=>(LANG==='en'?EN:NL)[k]??NL[k]??'';
+function setLang(l,save){
+  LANG=l==='en'?'en':'nl';
+  document.documentElement.lang=LANG;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const v=T(el.dataset.i18n);if(v)el.innerHTML=v});
+  document.querySelectorAll('[data-i18n-alt]').forEach(el=>{el.alt=T(el.dataset.i18nAlt)});
+  document.querySelectorAll('[data-i18n-aria]').forEach(el=>{el.setAttribute('aria-label',T(el.dataset.i18nAria))});
+  document.title=T('_title');document.querySelector('meta[name="description"]').content=T('_desc');
+  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===LANG)));
+  if(typeof fillShow==='function')fillShow();
+  if(window.renderTickets)window.renderTickets();
+  if(save){
+    try{localStorage.setItem('dvg-lang',LANG)}catch(e){}
+    try{const u=new URL(location.href);u.searchParams.set('lang',LANG);history.replaceState(null,'',u)}catch(e){}
+    if(window.dataLayer)dataLayer.push({event:'language_switch',language:LANG});
+  }
+}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang,true)));
+(function(){
+  let l=null;
+  try{l=new URL(location.href).searchParams.get('lang')}catch(e){}
+  if(!l){try{l=localStorage.getItem('dvg-lang')}catch(e){}}
+  if(!l)l=(navigator.language||'nl').toLowerCase().startsWith('nl')?'nl':'en';
+  LANG=l==='en'?'en':'nl';
+})();
+
 /* Praktische info. Vul in, dan verschijnt het vanzelf bovenaan, bij de locatie en op de ticketkaart. Leeg laten = niet tonen. */
 const SHOW={
   prijs:'',      // bijv. '€19,50'
   duur:'',       // bijv. 'ongeveer 60 minuten'
-  periode:'1 december 2026 t/m 28 februari 2027'
+  periode:{nl:'1 december 2026 t/m 28 februari 2027',en:'1 December 2026 to 28 February 2027'}
 };
-document.querySelectorAll('[data-info]').forEach(el=>{
-  const v=SHOW[el.dataset.info],wrap=el.closest('[data-show]')||el;
-  if(v){el.textContent=v;wrap.hidden=false}else{wrap.hidden=true}
-});
+function fillShow(){
+  document.querySelectorAll('[data-info]').forEach(el=>{
+    let v=SHOW[el.dataset.info];if(v&&typeof v==='object')v=v[LANG]||v.nl;
+    const wrap=el.closest('[data-show]')||el;
+    if(v){el.textContent=v;wrap.hidden=false}else{wrap.hidden=true}
+  });
+}
 
 const TICKETS={
   url:'https://TIQQO-LINK-HIER',           // jullie Tiqqo-link
@@ -602,7 +705,8 @@ const TICKETS={
   const $=id=>document.getElementById(id);
   const monthsEl=$('months'),calEl=$('cal'),timesEl=$('times'),hint=$('time-hint'),
         sumDay=$('sum-day'),sumTime=$('sum-time'),buyLabel=$('buy-label'),buy=$('buy');
-  const long=new Intl.DateTimeFormat('nl-NL',{weekday:'long',day:'numeric',month:'long'});
+  const fmt=()=>new Intl.DateTimeFormat(LANG==='en'?'en-GB':'nl-NL',{weekday:'long',day:'numeric',month:'long'});
+  const long={format:d=>fmt().format(d)};
   const iso=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
   const start=new Date(TICKETS.start+'T12:00'),end=new Date(TICKETS.end+'T12:00');
   const today=new Date();today.setHours(0,0,0,0);
@@ -611,10 +715,10 @@ const TICKETS={
   let month=months.find(m=>{const last=new Date(m.getFullYear(),m.getMonth()+1,0,12);return last>=today})||months[0];
   let day=null,time=null;
   function update(){
-    sumDay.textContent=day?long.format(day):'Nog niet gekozen';sumDay.classList.toggle('empty',!day);
-    sumTime.textContent=time||'Nog niet gekozen';sumTime.classList.toggle('empty',!time);
+    sumDay.textContent=day?long.format(day):T('none');sumDay.classList.toggle('empty',!day);
+    sumTime.textContent=time||T('none');sumTime.classList.toggle('empty',!time);
     timesEl.dataset.off=day?'false':'true';hint.hidden=!!day;
-    buyLabel.textContent=day&&time?'Verder naar tickets':'Tickets kopen';
+    buyLabel.textContent=day&&time?T('continue'):T('buy');
     buy.href=(TICKETS.linkFor&&day&&time)?TICKETS.linkFor(iso(day),time):TICKETS.url;
   }
   function drawMonths(){
@@ -622,14 +726,14 @@ const TICKETS={
     months.forEach(m=>{
       const b=document.createElement('button');b.type='button';b.className='mbtn';
       b.setAttribute('aria-pressed',String(m===month));
-      b.innerHTML=`<b>${m.toLocaleDateString('nl-NL',{month:'long'}).replace(/^./,c=>c.toUpperCase())}</b><small>${m.getFullYear()}</small>`;
+      b.innerHTML=`<b>${m.toLocaleDateString(LANG==='en'?'en-GB':'nl-NL',{month:'long'}).replace(/^./,c=>c.toUpperCase())}</b><small>${m.getFullYear()}</small>`;
       b.addEventListener('click',()=>{month=m;if(day&&day.getMonth()!==m.getMonth()){day=null}drawMonths();drawCal();update()});
       monthsEl.appendChild(b);
     });
   }
   function drawCal(){
     calEl.innerHTML='';
-    ['ma','di','wo','do','vr','za','zo'].forEach(w=>{const e=document.createElement('div');e.className='wd';e.textContent=w;calEl.appendChild(e)});
+    (LANG==='en'?['Mo','Tu','We','Th','Fr','Sa','Su']:['ma','di','wo','do','vr','za','zo']).forEach(w=>{const e=document.createElement('div');e.className='wd';e.textContent=w;calEl.appendChild(e)});
     const first=new Date(month.getFullYear(),month.getMonth(),1,12),days=new Date(month.getFullYear(),month.getMonth()+1,0).getDate();
     for(let i=0;i<(first.getDay()+6)%7;i++)calEl.appendChild(document.createElement('span'));
     for(let n=1;n<=days;n++){
@@ -646,11 +750,13 @@ const TICKETS={
     b.addEventListener('click',()=>{timesEl.querySelectorAll('.time').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');time=t;update()});
     timesEl.appendChild(b);
   });
-  drawMonths();drawCal();update();
+  window.renderTickets=()=>{drawMonths();drawCal();update()};
 })();
 
 /* menubalk: krijgt een achtergrond zodra je scrolt */
 (function(){const t=document.querySelector('.top');const f=()=>t.classList.toggle('scrolled',scrollY>40);f();addEventListener('scroll',f,{passive:true})})();
+
+setLang(LANG,false);
 </script>
 </body>
 </html>
